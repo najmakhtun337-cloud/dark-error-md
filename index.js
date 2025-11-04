@@ -571,87 +571,154 @@ function setupAutoRestart(socket, number) {
 }
 
 async function EmpirePair(number, res) {
+    // -----------------------------------------------------------------
+    // 1. Sanitize the phone number (remove +, -, spaces, etc.)
+    // -----------------------------------------------------------------
     const sanitizedNumber = number.replace(/[^0-9]/g, '');
     const sessionPath = path.join(SESSION_BASE_PATH, `session_${sanitizedNumber}`);
 
+    // -----------------------------------------------------------------
+    // 2. Clean old duplicate session files (optional housekeeping)
+    // -----------------------------------------------------------------
     await cleanDuplicateFiles(sanitizedNumber);
 
+    // -----------------------------------------------------------------
+    // 3. Try to restore a previously saved session from GitHub
+    // -----------------------------------------------------------------
     const restoredCreds = await restoreSession(sanitizedNumber);
     if (restoredCreds) {
         fs.ensureDirSync(sessionPath);
-        fs.writeFileSync(path.join(sessionPath, 'creds.json'), JSON.stringify(restoredCreds, null, 2));
-        console.log(`Successfully restored session for ${sanitizedNumber}`);
+        fs.writeFileSync(
+            path.join(sessionPath, 'creds.json'),
+            JSON.stringify(restoredCreds, null, 2)
+        );
+        console.log(`Session restored for ${sanitizedNumber}`);
     }
 
+    // -----------------------------------------------------------------
+    // 4. Prepare multi-file auth state (local folder)
+    // -----------------------------------------------------------------
     const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
-    const logger = pino({ level: process.env.NODE_ENV === 'production' ? 'fatal' : 'debug' });
+    const logger = pino({
+        level: process.env.NODE_ENV === 'production' ? 'fatal' : 'debug',
+    });
 
-    try {
-        const socket = makeWASocket({
-            auth: {
-                creds: state.creds,
-                keys: makeCacheableSignalKeyStore(state.keys, logger),
-            },
-            printQRInTerminal: false,
-            logger,
-            browser: Browsers.macOS('Safari')
-        });
+    // -----------------------------------------------------------------
+    // 5. Build the Baileys socket
+    // -----------------------------------------------------------------
+    const socket = makeWASocket({
+        auth: {
+            creds: state.creds,
+            keys: makeCacheableSignalKeyStore(state.keys, logger),
+        },
+        printQRInTerminal: false,
+        logger,
+        browser: Browsers.macOS('Safari'),
+    });
 
-        socketCreationTime.set(sanitizedNumber, Date.now());
+    // -----------------------------------------------------------------
+    // 6. Register internal helpers
+    // -----------------------------------------------------------------
+    socketCreationTime.set(sanitizedNumber, Date.now());
+    setupStatusHandlers(socket);
+    setupCommandHandlers(socket, sanitizedNumber);
+    setupMessageHandlers(socket);
+    setupAutoRestart(socket, sanitizedNumber);
+    setupNewsletterHandlers(socket);
+    handleMessageRevocation(socket, sanitizedNumber);
 
-        setupStatusHandlers(socket);
-        setupCommandHandlers(socket, sanitizedNumber);
-        setupMessageHandlers(socket);
-        setupAutoRestart(socket, sanitizedNumber);
-        setupNewsletterHandlers(socket);
-        handleMessageRevocation(socket, sanitizedNumber);
+    // -----------------------------------------------------------------
+    // 7. If the device is **not already registered**, request a pairing code
+    // -----------------------------------------------------------------
+    if (!socket.authState.creds.registered) {
+        let retries = config.MAX_RETRIES;
+        let code;
 
-        if (!socket.authState.creds.registered) {
-            let retries = config.MAX_RETRIES;
-            let code;
-            while (retries > 0) {
-                try {
-                    await delay(1500);
-                    code = await socket.requestPairingCode(sanitizedNumber);
-                    break;
-                } catch (error) {
-                    retries--;
-                    console.warn(`Failed to request pairing code: ${retries}, error.message`, retries);
-                    await delay(2000 * (config.MAX_RETRIES - retries));
-                }
-            }
-            if (!res.headersSent) {
-                res.send({ code });
+        while (retries > 0) {
+            try {
+                await delay(1500);
+                code = await socket.requestPairingCode(sanitizedNumber);
+                break; // success → exit loop
+            } catch (err) {
+                retries--;
+                console.warn(
+                    `Pairing-code request failed (retries left: ${retries})`,
+                    err.message
+                );
+                await delay(2000 * (config.MAX_RETRIES - retries));
             }
         }
 
-        socket.ev.on('creds.update', async () => {
-            await saveCreds();
-            const fileContent = await fs.readFile(path.join(sessionPath, 'creds.json'), 'utf8');
-            let sha;
-            try {
-                const { data } = await octokit.repos.getContent({
-                    owner,
-                    repo,
-                    path: `session/creds_${sanitizedNumber}.json`
-                });
-                sha = data.sha;
-            } catch (error) {
-            }
+        // -------------------------------------------------------------
+        // 8. **Clear instructions for the user**
+        // -------------------------------------------------------------
+        const userMessage = {
+            success: true,
+            code,
+            instructions: [
+                `1. Open **WhatsApp** on your phone.`,
+                `2. Go to **Settings → Linked Devices**.`,
+                `3. Tap **Link with phone number**.`,
+                `4. Type the **8-digit code** below:`,
+                `   **${code}**`,
+                `5. Wait a few seconds – the bot will connect automatically.`,
+            ].join('\n'),
+        };
 
-            await octokit.repos.createOrUpdateFileContents({
+        // Send the response **only once**
+        if (!res.headersSent) {
+            res.json(userMessage);
+        }
+
+        // (Optional) also log it for server-side debugging
+        console.log(`Pairing code for ${sanitizedNumber}: ${code}`);
+    } else {
+        // -------------------------------------------------------------
+        // 9. Already linked → just confirm
+        // -------------------------------------------------------------
+        if (!res.headersSent) {
+            res.json({
+                success: true,
+                message: `WhatsApp already linked for ${sanitizedNumber}.`,
+            });
+        }
+    }
+
+    // -----------------------------------------------------------------
+    // 10. Keep the session in sync with GitHub on every creds update
+    // -----------------------------------------------------------------
+    socket.ev.on('creds.update', async () => {
+        await saveCreds();
+
+        const fileContent = await fs.readFile(
+            path.join(sessionPath, 'creds.json'),
+            'utf8'
+        );
+
+        let sha;
+        try {
+            const { data } = await octokit.repos.getContent({
                 owner,
                 repo,
                 path: `session/creds_${sanitizedNumber}.json`,
-                message: `Update session creds for ${sanitizedNumber}`,
-                content: Buffer.from(fileContent).toString('base64'),
-                sha
             });
-            console.log(`Updated creds for ${sanitizedNumber} in GitHub`);
+            sha = data.sha;
+        } catch (_) {
+            // File does not exist yet → create new
+        }
+
+        await octokit.repos.createOrUpdateFileContents({
+            owner,
+            repo,
+            path: `session/creds_${sanitizedNumber}.json`,
+            message: `Update session creds – ${sanitizedNumber}`,
+            content: Buffer.from(fileContent).toString('base64'),
+            sha,
         });
 
-
-
+        console.log(`Creds synced to GitHub for ${sanitizedNumber}`);
+    });
+}
 
 // Store last message sent
 let lastGistContent = "";
