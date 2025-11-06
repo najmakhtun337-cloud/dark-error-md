@@ -12,7 +12,7 @@ module.exports = {
         vcard: `
 BEGIN:VCARD
 VERSION:3.0
-FN:bilal
+FN:loft
 TEL;type=CELL;type=VOICE;waid=255778018545:+255778018545
 END:VCARD`.trim(),
       }
