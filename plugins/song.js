@@ -116,7 +116,7 @@ module.exports = {
                 mimetype: "audio/mpeg",
                 jpegThumbnail: await getThumbnailBuffer(data.thumbnail),
                 fileName: `${data.title}.mp3`,
-                caption: `${data.title}\n\n> ᴍɪɴɪ bilal md`
+                caption: `${data.title}\n\n> 𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝`
               }, { quoted: mek });
               break;
 
