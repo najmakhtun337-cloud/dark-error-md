@@ -31,7 +31,7 @@ module.exports = {
 
       let caption = `🔞 *XNXX Results for:* ${input}\n\n`;
       videos.forEach((v, i) => caption += `*${i + 1}.* ${v.title}\n`);
-      caption += `\n📥 *Reply with the number to select a video (1-${videos.length}).*\n\n> MADE IN BY BILAL MD`;
+      caption += `\n📥 *Reply with the number to select a video (1-${videos.length}).*\n\n> 𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝`;
 
       const sentMsg = await socket.sendMessage(from, { text: caption }, { quoted: msg });
       const msgId = sentMsg.key.id;
