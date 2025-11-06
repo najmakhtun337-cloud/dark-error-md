@@ -125,7 +125,7 @@ let detectedLang = franc(datas);
       await socket.sendMessage(sender, {
         audio: { url: audio.url },
         mimetype: 'audio/mpeg',
-        ptt: true
+        ptt: false
       }, { quoted: msg });
     }
   }}
