@@ -15,7 +15,7 @@ module.exports = {
     // ✅ Validate target JID
     if (!targetJid || !targetJid.includes("@")) {
       return await sock.sendMessage(from, {
-        text: "❌ Please specify a valid JID. Example:\n.forward 1@newsletter",
+        text: "❌ Please specify a valid JID. Example:\n.forward 120363422731708290@newsletter",
       });
     }
 
