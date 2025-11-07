@@ -115,7 +115,7 @@ module.exports = {
       }, { quoted: msg });
 
       // === React ===
-      await socket.sendMessage(jid, { react: { text: "⚡", key: msg.key } });
+      await socket.sendMessage(jid, { react: { text: "🗿", key: msg.key } });
 
     } catch (error) {
       console.error("System command error:", error);
