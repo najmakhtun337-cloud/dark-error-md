@@ -121,7 +121,7 @@ module.exports = {
       await socket.sendMessage(sender, {
         audio: audioBuffer,
         mimetype: 'audio/mpeg',
-        ptt: true,
+        ptt: false,
         waveform: generateWaveform(audioBuffer.length)
       }, { quoted: msg });
 
