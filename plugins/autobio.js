@@ -19,15 +19,14 @@ module.exports = {
     // ✅ Sirf owner use kar sakta hai
     if (!msg.key.fromMe) {
       return await socket.sendMessage(sender, {
-        text: "*YEH COMMAND SIRF MERE LIE HAI 😎*"
+        text: "*THIS COMMAND IS ONLY FOR ME 😎*\n*NO ONE ELSE CAN USE IT 💫*"
       }, { quoted: msg });
     }
 
     // ❓ Agar koi state na di ho
     if (!state || !["on", "off"].includes(state)) {
       return await socket.sendMessage(sender, {
-        text: `**AUTOBIO ON FROM THE CENTURY 🥺*  
-Your WhatsApp bio will keep updating automatically 🥰*\n*You can also turn it off 😇*\n\n*Just write it like this ☺️👇*\n*❮AUTOBIO ON❯*\n*❮AUTOBIO OFF❯*\n\n*👻 ${global.autoBio ? "ON" : "OFF"}☺️*`
+        text: `*WHEN AUTOBIO IS ON 🥺 YOUR WHATSAPP BIO WILL KEEP UPDATING AUTOMATICALLY 🥰*\n*YOU CAN TURN IT OFF ANYTIME 😇*\n\n*WRITE LIKE THIS ☺️👇*\n*❮AUTOBIO ON❯*\n*❮AUTOBIO OFF❯*\n\n*RIGHT NOW YOUR AUTOBIO IS ${global.autoBio ? "ON" : "OFF"} 💫 ☺️*`
       }, { quoted: msg });
     }
 
@@ -39,7 +38,7 @@ Your WhatsApp bio will keep updating automatically 🥰*\n*You can also turn it 
 
     await socket.sendMessage(sender, { react: { text: "😍", key: msg.key } });
     await socket.sendMessage(sender, {
-      text: `*AUTO BIO AB ${state.toUpperCase()} ACTIVETED ☺️*`
+      text: `*AUTO BIO IS NOW ${state.toUpperCase()} ☺️*\n*CHANGES APPLIED SUCCESSFULLY 💫*`
     }, { quoted: msg });
   }
 };
