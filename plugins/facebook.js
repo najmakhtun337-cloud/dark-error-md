@@ -8,142 +8,151 @@ function formatDuration(ms) {
   return `${minutes}:${seconds.toString().padStart(2, '0')}`;
 }
 
+// Active handlers to prevent duplicates & memory leaks
+const activeHandlers = new Map();
+
 module.exports = {
   command: "facebook",
-  description: "📘 Download Facebook Reel Video (HD/SD) with details",
-  react: "📥",
+  description: "Download Facebook Reel/Video (HD/SD) with quality selection",
+  react: "DOWNLOAD",
   category: "download",
 
   execute: async (socket, msg, args) => {
+    const from = msg.key.remoteJid;
+    const url = args[0]?.trim();
+    const senderName = msg.pushName || "User";
+
+    // === Input Validation ===
+    if (!url || !url.includes("facebook.com")) {
+      return socket.sendMessage(from, {
+        text: "❌ *Invalid or missing URL!*\n\n*Usage:* `.facebook https://www.facebook.com/reel/xyz`",
+      }, { quoted: msg });
+    }
+
     try {
-      const from = msg.key.remoteJid;
-      const url = args[0];
-      const pushname = msg.pushName || "there";
+      // === Fetch from your API ===
+      const { data: api } = await axios.get(
+        `https://api.princetechn.com/api/download/facebook?apikey=prince&url=${encodeURIComponent(url)}`
+      );
 
-      if (!url || !url.includes("facebook.com")) {
-        return await socket.sendMessage(from, {
-          text: `❌ *Please provide a valid Facebook video/reel URL!*\n\nExample: *.facebook https://www.facebook.com/reel/xyz*`,
+      if (!api.status || !api.data) {
+        return socket.sendMessage(from, {
+          text: "API Error: No data received. Try again later.",
         }, { quoted: msg });
       }
 
-      const api = await axios.get(`https://api.siputzx.my.id/api/d/facebook?url=${encodeURIComponent(url)}`);
+      const { title, duration, views, reactions, comments, urls } = api.data;
 
-      // Debugging log (optional)
-      console.log("Full API response:", JSON.stringify(api.data, null, 2));
-
-      if (!api.data.status || !api.data.data) {
-        return await socket.sendMessage(from, {
-          text: "❌ Failed to fetch video data. Please try again later or check your URL.",
+      if (!urls || !Array.isArray(urls) || urls.length === 0) {
+        return socket.sendMessage(from, {
+          text: "No video links found. The reel may be private or removed.",
         }, { quoted: msg });
       }
 
-      const data = api.data.data;
+      const hdVideo = urls[0];
+      const sdVideo = urls[1] || null;
 
-      if (!data.urls || !Array.isArray(data.urls) || data.urls.length === 0) {
-        return await socket.sendMessage(from, {
-          text: "❌ No downloadable video URLs found. The video may be private or unavailable.",
-        }, { quoted: msg });
-      }
+      // === Build Rich Caption ===
+      const caption = `
+*╭━━━━━━━━━━━━━━━━━━⭓*
+*│*  *REQUESTED BY:* @${senderName.split(" ")[0]}
+*│*  
+*│*  *TITLE:* ${title || "Unknown"}
+*│*  *DURATION:* \`${formatDuration(duration)}\`
+*│*  *VIEWS:* \`${views?.toLocaleString() || "N/A"}\`
+*│*  *LIKES:* \`${reactions?.toLocaleString() || "N/A"}\`
+*│*  *COMMENTS:* \`${comments?.toLocaleString() || "N/A"}\`
+*│*  *SOURCE:* [Tap Here](${url})
+*│*  
+*│*  *Choose Quality:*
+*│*  
+*│*  *1. HD Quality* (1080p)
+*│*  *2. SD Quality* (480p)
+*│*  *3. Audio Only* (Not Available)
+*│*  
+*╰━━━━━━━━━━━━━━━━━━⭓*
 
-      const hdVideo = data.urls[0];
-      const sdVideo = data.urls[1] || null;
+> Reply with *1*, *2*, or *3* to download
+> *Powered by 𝙼𝚛 𝙻𝚘𝚏𝚝*
+      `.trim();
 
-      const title = data.title || "N/A";
-      const duration = formatDuration(data.duration);
-      const comments = data.comments ?? "N/A";
-      const reactions = data.reactions ?? "N/A";
-      const views = data.views ?? "N/A";
-
-      const caption =
-`
-╭───────────────⭓
-│  👤 ʀᴇQᴜᴇꜱᴛᴇᴅ ʙʏ: ${pushname}
-│  🎬 ᴛɪᴛʟᴇ: ${title}
-│  ⏱️ ᴅᴜʀᴀᴛɪᴏɴ: ${duration}
-│  👁️ ᴠɪᴇᴡꜱ: ${views}
-│  ❤️ ʀᴇᴀᴄᴛɪᴏɴꜱ: ${reactions}
-│  💬 ᴄᴏᴍᴍᴇɴᴛꜱ: ${comments}
-│  🔗 ꜱᴏᴜʀᴄᴇ: ${url}
-│  
-│  🔢 *ʀᴇᴘʟʏ ᴡɪᴛʜ ᴛʜᴇ ɴᴜᴍʙᴇʀ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ:*
-│  
-│  ╭─────────────●●►
-│  ├ 🎞️ *1* ʜᴅ Qᴜᴀʟɪᴛʏ ᴠɪᴅᴇᴏ
-│  ├ 📼 *2* ꜱᴅ Qᴜᴀʟɪᴛʏ ᴠɪᴅᴇᴏ
-│  ├ 🎧 *3* ᴀᴜᴅɪᴏ ᴏɴʟʏ (ᴜɴᴀᴠᴀɪʟᴀʙʟᴇ)
-│  ╰─────────────●●►
-│  
-│  ⚠️ *ɴᴏᴛᴇ:* ᴀᴜᴅɪᴏ ᴏɴʟʏ ᴏᴘᴛɪᴏɴ ɪꜱ ᴄᴜʀʀᴇɴᴛʟʏ ᴜɴᴀᴠᴀɪʟᴀʙʟᴇ ꜰᴏʀ ꜰᴀᴄᴇʙᴏᴏᴋ ᴠɪᴅᴇᴏꜱ.
-│  
-╰───────────────⭓
-● 𝙼𝚛 𝙻𝚘𝚏𝚝 ●`;
-
+      // === Send Preview + Menu ===
       const previewUrl = "https://files.catbox.moe/deeo6l.jpg";
-
       const sentMsg = await socket.sendMessage(from, {
         image: { url: previewUrl },
         caption,
+        mentions: [msg.key.participant || from],
       }, { quoted: msg });
 
-      const msgId = sentMsg.key.id;
+      const menuMsgId = sentMsg.key.id;
 
-      const messageListener = async (messageUpdate) => {
-        try {
-          const mek = messageUpdate.messages[0];
-          if (!mek.message) return;
+      // === Prevent Duplicate Handlers ===
+      if (activeHandlers.has(menuMsgId)) return;
+      const handlerTimeout = setTimeout(() => activeHandlers.delete(menuMsgId), 3 * 60 * 1000);
 
-          const isReply = mek.message.extendedTextMessage?.contextInfo?.stanzaId === msgId;
-          if (!isReply) return;
-          if (mek.key.remoteJid !== from) return;
+      // === Reply Handler ===
+      const replyHandler = async (update) => {
+        const m = update.messages?.[0];
+        if (!m?.message) return;
 
-          const text = mek.message.conversation || mek.message.extendedTextMessage?.text;
-          await socket.sendMessage(from, { react: { text: '✅', key: mek.key } });
+        const replyTo = m.message?.extendedTextMessage?.contextInfo?.stanzaId;
+        if (replyTo !== menuMsgId || m.key.remoteJid !== from) return;
 
-          switch (text.trim()) {
-            case "1":
-              if (!hdVideo) return socket.sendMessage(from, { text: "❌ HD video not available." }, { quoted: mek });
-              await socket.sendMessage(from, {
-                video: { url: hdVideo },
-                caption: "✅ *Facebook Video (HD)*\n> Vajira Mini Bot"
-              }, { quoted: mek });
-              break;
+        const choice = (m.message.conversation || m.message.extendedTextMessage?.text || "").trim();
 
-            case "2":
-              if (!sdVideo) return socket.sendMessage(from, { text: "❌ SD video not available." }, { quoted: mek });
-              await socket.sendMessage(from, {
-                video: { url: sdVideo },
-                caption: "📼 *Facebook Video (SD)*\n> Vajira Mini Bot"
-              }, { quoted: mek });
-              break;
+        // React to selection
+        await socket.sendMessage(from, { react: { text: "CHECKMARK", key: m.key } });
 
-            case "3":
-              await socket.sendMessage(from, {
-                text: "❌ Audio only option is not available for Facebook videos.",
-              }, { quoted: mek });
-              break;
+        switch (choice) {
+          case "1":
+            if (!hdVideo) {
+              return socket.sendMessage(from, { text: "HD link unavailable." }, { quoted: m });
+            }
+            await socket.sendMessage(from, {
+              video: { url: hdVideo },
+              mimetype: "video/mp4",
+              caption: `*HD Video Downloaded*\n> _Quality: 1080p_ • 𝙼𝚛 𝙻𝚘𝚏𝚝`
+            }, { quoted: m });
+            break;
 
-            default:
-              await socket.sendMessage(from, {
-                text: "❌ Invalid option. Please reply with 1, 2, or 3.",
-              }, { quoted: mek });
-          }
-        } catch (err) {
-          console.error("Reply handler error:", err);
+          case "2":
+            if (!sdVideo) {
+              return socket.sendMessage(from, { text: "SD link unavailable." }, { quoted: m });
+            }
+            await socket.sendMessage(from, {
+              video: { url: sdVideo },
+              mimetype: "video/mp4",
+              caption: `*SD Video Downloaded*\n> _Quality: 480p_ • 𝙼𝚛 𝙻𝚘𝚏𝚝`
+            }, { quoted: m });
+            break;
+
+          case "3":
+            await socket.sendMessage(from, {
+              text: "Audio extraction is *not supported* for Facebook videos.",
+            }, { quoted: m });
+            break;
+
+          default:
+            await socket.sendMessage(from, {
+              text: "Invalid choice. Reply with *1* (HD), *2* (SD), or *3* (Audio).",
+            }, { quoted: m });
+            return;
         }
+
+        // === Cleanup ===
+        socket.ev.off("messages.upsert", replyHandler);
+        clearTimeout(handlerTimeout);
+        activeHandlers.delete(menuMsgId);
       };
 
-      socket.ev.on("messages.upsert", messageListener);
+      socket.ev.on("messages.upsert", replyHandler);
+      activeHandlers.set(menuMsgId, { handler: replyHandler, timeout: handlerTimeout });
 
-      setTimeout(() => {
-        socket.ev.off("messages.upsert", messageListener);
-      }, 2 * 60 * 1000);
-
-    } catch (e) {
-      console.error("Main error:", e);
-      await socket.sendMessage(msg.key.remoteJid, {
-        text: `⚠️ *Error occurred:* ${e.message}`,
+    } catch (error) {
+      console.error("Facebook Downloader Error:", error.message);
+      await socket.sendMessage(from, {
+        text: `Download Failed\n\`\`\`${error.message}\`\`\``,
       }, { quoted: msg });
     }
   }
 };
-                  
