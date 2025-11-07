@@ -12,7 +12,7 @@ module.exports = {
       const isGroup = from.endsWith("@g.us");
 
       if (!isGroup)
-        return await sock.sendMessage(from, { text: "*YEH COMMAND SIRF GROUPS ME USE HOTA HAI 😅*" }, { quoted: msg });
+        return await sock.sendMessage(from, { text: "😅" }, { quoted: msg });
 
       // Group metadata se participants nikal lo
       const groupMetadata = await sock.groupMetadata(from);
@@ -26,14 +26,14 @@ module.exports = {
       const isAdmin = groupAdmins.includes(sender);
 
       if (!isAdmin)
-        return await sock.sendMessage(from, { text: "*YEH COMMAND SIRF ADMINS USE KAR SAKTE HAI ☺️❤️*" }, { quoted: msg });
+        return await sock.sendMessage(from, { text: "☺️" }, { quoted: msg });
 
       // Reply check
       const stanzaId = msg.message?.extendedTextMessage?.contextInfo?.stanzaId;
       const participant = msg.message?.extendedTextMessage?.contextInfo?.participant;
 
       if (!stanzaId)
-        return await sock.sendMessage(from, { text: "*PEHLE MSG REPLY KARO, PHIR DELETE COMMAND USE KARO 🥳*" }, { quoted: msg });
+        return await sock.sendMessage(from, { text: "🥳" }, { quoted: msg });
 
       // Delete message
       await sock.sendMessage(from, {
@@ -45,7 +45,7 @@ module.exports = {
         },
       });
 
-      await sock.sendMessage(from, { text: "*✅ Message delete kar diya gaya!*" }, { quoted: msg });
+      await sock.sendMessage(from, { text: "*✅ Message delete enabled!*" }, { quoted: msg });
 
     } catch (err) {
       console.error("Delete Error:", err);
