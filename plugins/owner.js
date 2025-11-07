@@ -90,7 +90,7 @@ END:VCARD`.trim(),
 
       // === Optional: React to user's message ===
       await sock.sendMessage(jid, {
-        react: { text: "👑", key: msg.key },
+        react: { text: "🌟", key: msg.key },
       });
 
     } catch (error) {
