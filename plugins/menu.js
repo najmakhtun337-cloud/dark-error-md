@@ -2,16 +2,18 @@ const config = require('../config');
 
 module.exports = {
   command: "menu",
-  description: "Bot commands.",
+  description: "Displays bot commands menu with a random image.",
   react: "🔰",
   category: "main",
-  execute: async (socket, msg, args, number) => {
-    try {
-      const from = msg.key.remoteJid;
-      const sender = msg.key.participant || from;
-      const pushname = msg.pushName || "there";
 
-      // ────── RANDOM IMAGE ARRAY ──────
+  execute: async (socket, msg, args, number) => {
+    const { key } = msg;
+    const from = key.remoteJid;
+    const sender = key.participant || from;
+    const pushname = msg.pushName || "User";
+
+    try {
+      // ────── RANDOM IMAGE ARRAY (Optimized) ──────
       const MENU_IMAGES = [
         'https://files.catbox.moe/deeo6l.jpg',
         'https://h.uguu.se/tEviMVWD.jpg',
@@ -21,13 +23,12 @@ module.exports = {
         'https://h.uguu.se/DyPmSRHF.jpg',
         'https://d.uguu.se/XCvZECji.jpg',
         'https://h.uguu.se/gHfOEiLr.jpg',
-        // add more URLs here
       ];
 
-      const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
+      const getRandomImage = () => MENU_IMAGES[Math.floor(Math.random() * MENU_IMAGES.length)];
 
-      // ────── MENU TEXT (unchanged) ──────
-      const menumsg = `
+      // ────── DYNAMIC MENU TEXT (Clean & Structured) ──────
+      const menuText = `
 ╭▰☭ *𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝* ☭▰╮
 ✖ 🔰 *ʙᴏᴛ ɴᴀᴍᴇ:* 𝙻𝚘𝚏𝚝 𝚀𝚞𝚊𝚗𝚝𝚞𝚖
 ✖ 🔰 *ᴏᴡɴᴇʀ:* 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃
@@ -111,29 +112,36 @@ module.exports = {
 *┃☭│ • 𝙶𝙴𝚃𝙳𝙿*
 *┃☭│ • 𝙱𝙸𝚁𝚃𝙷𝙳𝙰𝚈*
 *╰━━━━━━━━━━━━━━━┈⊷*
-> *𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃*`;
+> *Powered by Sir LOFT*
+`.trim();
 
-      // ────── SEND MESSAGE WITH RANDOM IMAGE ──────
-      await socket.sendMessage(sender, {
-        image: { url: randomItem(MENU_IMAGES) },
-        caption: menumsg,
-        contextInfo: {
-          mentionedJid: [sender],
-          forwardingScore: 999,
-          isForwarded: true,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363422731708290@newsletter',
-            newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚃',
-            serverMessageId: 143
+      // ────── SEND MENU WITH RANDOM IMAGE ──────
+      await socket.sendMessage(
+        from,
+        {
+          image: { url: getRandomImage() },
+          caption: menuText,
+          contextInfo: {
+            mentionedJid: [sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: {
+              newsletterJid: '120363422731708290@newsletter',
+              newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚃',
+              serverMessageId: 143
+            }
           }
-        }
-      }, { quoted: msg });
+        },
+        { quoted: msg }
+      );
 
-    } catch (e) {
-      console.error(e);
-      await socket.sendMessage(msg.key.remoteJid, { 
-        text: `❌ ERROR: ${e.message}` 
-      }, { quoted: msg });
+    } catch (error) {
+      console.error("Menu Command Error:", error);
+      await socket.sendMessage(
+        from,
+        { text: `❌ *Error:* \`${error.message}\`` },
+        { quoted: msg }
+      );
     }
   }
 };
