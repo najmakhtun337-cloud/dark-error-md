@@ -20,7 +20,7 @@ module.exports = {
         'https://d.uguu.se/eOnVundp.jpg',
         'https://h.uguu.se/DyPmSRHF.jpg',
         'https://d.uguu.se/XCvZECji.jpg',
-        'https://h.uguu.se/DyPmSRHF.jpg',
+        'https://h.uguu.se/gHfOEiLr.jpg',
         // add more URLs here
       ];
 
