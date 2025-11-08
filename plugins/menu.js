@@ -14,8 +14,8 @@ module.exports = {
       // ────── RANDOM IMAGE ARRAY ──────
       const MENU_IMAGES = [
         'https://files.catbox.moe/deeo6l.jpg',
-        'https://files.catbox.moe/abc123.jpg',
-        'https://files.catbox.moe/xyz987.jpg',
+        'https://h.uguu.se/tEviMVWD.jpg',
+        'https://o.uguu.se/FGDyxLGk.jpg',
         'https://files.catbox.moe/111aaa.jpg',
         'https://files.catbox.moe/222bbb.jpg',
         // add more URLs here
