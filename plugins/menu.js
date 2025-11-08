@@ -1,5 +1,9 @@
 const config = require('../config');
 
+/**
+ * Menu Command - Displays a stylish command menu with a random image
+ * Category: main
+ */
 module.exports = {
   command: "menu",
   description: "Displays bot commands menu with a random image.",
@@ -13,7 +17,7 @@ module.exports = {
     const pushname = msg.pushName || "User";
 
     try {
-      // ────── RANDOM IMAGE ARRAY (Optimized) ──────
+      // ────── RANDOM IMAGE POOL (High-quality, stable hosts) ──────
       const MENU_IMAGES = [
         'https://files.catbox.moe/deeo6l.jpg',
         'https://h.uguu.se/tEviMVWD.jpg',
@@ -25,123 +29,122 @@ module.exports = {
         'https://h.uguu.se/gHfOEiLr.jpg',
       ];
 
-      const getRandomImage = () => MENU_IMAGES[Math.floor(Math.random() * MENU_IMAGES.length)];
+      const getRandomImage = () => 
+        MENU_IMAGES[Math.floor(Math.random() * MENU_IMAGES.length)];
 
-      // ────── DYNAMIC MENU TEXT (Clean & Structured) ──────
+      // ────── DYNAMIC MENU TEXT (Clean, Structured, Maintainable) ──────
       const menuText = `
-╭▰☭ *𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝* ☭▰╮
-✖ 🔰 *ʙᴏᴛ ɴᴀᴍᴇ:* 𝙻𝚘𝚏𝚝 𝚀𝚞𝚊𝚗𝚝𝚞𝚖
-✖ 🔰 *ᴏᴡɴᴇʀ:* 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃
-✖ 🔰 *ᴠᴇʀꜱɪᴏɴ:* 𝚕𝚊𝚝𝚎𝚜𝚝 𝚀𝚞𝚊𝚗𝚝𝚞𝚖
-✖ 🔰 *ᴘʟᴀᴛꜰᴏʀᴍ:* 𝚀𝚞𝚊𝚗𝚝𝚞𝚖 (𝙻𝚒𝚗𝚞𝚡 𝟸𝟸.𝟶𝟺)
-✖ 🔰 *USER*: ${pushname}*
-✖ 🔰 *PREFiX*: ${config.PREFIX}*
-━━━━━━━━━━━━━━━━━━━
-✆ 𝚆𝚎𝚕𝚕𝚌𝚘𝚖𝚎 𝚝𝚘 🔰𝚀𝚄𝙰𝙽𝚃𝚄𝙼
-✆ 𝚃𝚑𝚊𝚗𝚔𝚜 𝚏𝚘𝚛 𝚌𝚑𝚘𝚘𝚜𝚒𝚗𝚐 𝚞𝚜
+╭━━━━━━━━━━━━━━━━━━━━━━━╮
+│   🔰 *𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝* 🔰   │
+╰━━━━━━━━━━━━━━━━━━━━━━━╯
+✦ *Bot Name:* 𝙻𝚘𝚏𝚝 𝚀𝚞𝚊𝚗𝚝𝚞𝚖
+✦ *Owner:* 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃
+✦ *Version:* 𝙻𝚊𝚝𝚎𝚜𝚝 𝚀𝚞𝚊𝚗𝚝𝚞𝚖
+✦ *Platform:* 𝚀𝚞𝚊𝚗𝚝𝚞𝚖 (𝙻𝚒𝚗𝚞𝚡 𝟸𝟸.𝟶𝟺)
+✦ *User:* ${pushname}
+✦ *Prefix:* \`${config.PREFIX}\`
+━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ *Welcome to Quantum Loft!* ✨
+💡 *Thanks for using our bot!*
 
-*╭━━☭  𝙶𝙴𝙽𝙴𝚁𝙰𝙻 ☭━━┈⊷*
-*┃☭│ • 𝙰𝙻𝙸𝚅𝙴*
-*┃☭│ • 𝚄𝙿𝚃𝙸𝙼𝙴*
-*┃☭│ • 𝙿𝙸𝙽𝙶*
-*┃☭│ • 𝚂𝚈𝚂𝚃𝙴𝙼*
-*┃☭│ • 𝚂𝚄𝙿𝙿𝙾𝚁𝚃*
-*┃☭│ • 𝙾𝚆𝙽𝙴𝚁*
-*┃☭│ • 𝙿𝙰𝙸𝚁*
-*┃☭│ • 𝙼𝙴𝙽𝚄*
-*┃☭│ • 𝙵𝙾𝚁𝚆𝙰𝚁𝙳*
-*┃☭│ • 𝙻𝙸𝚂𝚃*
-*┃☭│ • 𝙶𝚁𝙾𝚄𝙿𝙻𝙸𝙽𝙺*
-*┃☭│ • 𝙰𝚄𝚃𝙾𝙱𝙸𝙾*
-*╰━━━━━━━━━━━━━━━┈⊷*
+┏━━❮ *GENERAL COMMANDS* ❯━━┓
+┃ • ${config.PREFIX}alive
+┃ • ${config.PREFIX}uptime
+┃ • ${config.PREFIX}ping
+┃ • ${config.PREFIX}system
+┃ • ${config.PREFIX}support
+┃ • ${config.PREFIX}owner
+┃ • ${config.PREFIX}pair
+┃ • ${config.PREFIX}menu
+┃ • ${config.PREFIX}forward
+┃ • ${config.PREFIX}list
+┃ • ${config.PREFIX}grouplink
+┃ • ${config.PREFIX}autobio
+┗━━━━━━━━━━━━━━━━━━━━━━━┛
 
-*╭━━☭  𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 ☭━━┈⊷*
-*┃☭│ • 𝚂𝙾𝙽𝙶*
-*┃☭│ • 𝚅𝙸𝙳𝙴𝙾*
-*┃☭│ • 𝚃𝙸𝙺𝚃𝙾𝙺*
-*┃☭│ • 𝙵𝙰𝙲𝙴𝙱𝙾𝙾𝙺*
-*┃☭│ • 𝙰𝙿𝙺*
-*┃☭│ • 𝙸𝙼𝙶*
-*╰━━━━━━━━━━━━━━━┈⊷*
-  
-*╭━━☭  𝚕𝚘𝚏𝚝 𝚊𝚒 ☭━━┈⊷*
-*┃☭│ • 𝚂𝙸𝚁𝙸*
-*┃☭│ • 𝙱𝙸𝚇𝙱𝚈*
-*┃☭│ • 𝙱𝚁𝙴𝙴𝙽𝙾*
-*┃☭│ • 𝚇𝙸𝙰𝙾𝙰𝙸*
-*┃☭│ • 𝙴𝙻𝙻𝙰*
-*╰━━━━━━━━━━━━━━━┈⊷*
+┏━━❮ *DOWNLOAD COMMANDS* ❯━━┓
+┃ • ${config.PREFIX}song
+┃ • ${config.PREFIX}video
+┃ • ${config.PREFIX}tiktok
+┃ • ${config.PREFIX}facebook
+┃ • ${config.PREFIX}apk
+┃ • ${config.PREFIX}img
+┗━━━━━━━━━━━━━━━━━━━━━━━┛
 
-*╭━━☭  𝙾𝚆𝙽𝙴𝚁 ☭━━┈⊷*
-*┃☭│ • 𝙱𝙻𝙾𝙲𝙺*
-*┃☭│ • 𝚄𝙽𝙱𝙻𝙾𝙲𝙺*
-*┃☭│ • 𝙳𝙴𝙻𝙴𝚃𝙴*
-*┃☭│ • 𝙻𝙴𝙰𝚅𝙴*
-*┃☭│ • 𝙰𝙳𝚂*
-*┃☭│ • 𝚅𝚅*
-*┃☭│ • 𝙹𝙾𝙸𝙽*
-*┃☭│ • 𝙹𝙸𝙳*
-*╰━━━━━━━━━━━━━━━┈⊷*
+┏━━❮ *LOFT AI* ❯━━┓
+┃ • ${config.PREFIX}siri
+┃ • ${config.PREFIX}bixby
+┃ • ${config.PREFIX}breeno
+┃ • ${config.PREFIX}xiaoai
+┃ • ${config.PREFIX}ella
+┗━━━━━━━━━━━━━━━━━━━━━━━┛
 
-*╭━━☭  𝙶𝚁𝙾𝚄𝙿 ☭━━┈⊷*
-*┃☭│ • 𝙹𝙾𝙸𝙽*
-*┃☭│ • 𝙻𝙴𝙰𝚅𝙴*
-*┃☭│ • 𝙱𝙲*
-*┃☭│ • 𝙷𝙸𝙳𝙴𝚃𝙰𝙶*
-*┃☭│ • 𝚆𝙴𝙻𝙲𝙾𝙼𝙴*
-*┃☭│ • 𝙼𝚄𝚃𝙴*
-*┃☭│ • 𝚄𝙽𝙼𝚄𝚃𝙴*
-*┃☭│ • 𝙺𝙸𝙲𝙺*
-*┃☭│ • 𝙰𝙳𝙳*
-*┃☭│ • 𝚃𝙰𝙶𝙰𝙻𝙻*
-*┃☭│ • 𝙿𝚁𝙾𝙼𝙾𝚃𝙴*
-*┃☭│ • 𝙳𝙴𝙼𝙾𝚃𝙴*
-*┃☭│ • 𝙶𝙽𝙰𝙼𝙴*
-*┃☭│ • 𝙶𝙳𝙴𝚂𝙲*
-*╰━━━━━━━━━━━━━━━┈⊷*
+┏━━❮ *OWNER ONLY* ❯━━┓
+┃ • ${config.PREFIX}block
+┃ • ${config.PREFIX}unblock
+┃ • ${config.PREFIX}delete
+┃ • ${config.PREFIX}leave
+┃ • ${config.PREFIX}ads
+┃ • ${config.PREFIX}vv
+┃ • ${config.PREFIX}join
+┃ • ${config.PREFIX}jid
+┗━━━━━━━━━━━━━━━━━━━━━━━┛
 
-*╭━━☭  𝙾𝚃𝙷𝙴𝚁 ☭━━┈⊷*
-*┃☭│ • 𝙶𝙴𝚃𝙿𝙿*
-*┃☭│ • 𝚂𝚃𝙸𝙲𝙺𝙴𝚁*
-*┃☭│ • 𝚅𝙾𝙸𝙲𝙴𝙶𝙿𝚃*
-*┃☭│ • 𝙹𝙾𝙺𝙴*
-*┃☭│ • 𝚆𝙴𝙰𝚃𝙷𝙴𝚁*
-*┃☭│ • 𝙰𝙸𝚂𝚄𝙼𝙼𝙰𝚁𝚈*
-*┃☭│ • 𝚂𝙴𝙽𝙳𝚄𝙿𝙳𝙰𝚃𝙴*
-*┃☭│ • 𝚃𝙴𝚇𝚃𝙼*
-*┃☭│ • 𝙶𝙴𝚃𝙳𝙿*
-*┃☭│ • 𝙱𝙸𝚁𝚃𝙷𝙳𝙰𝚈*
-*╰━━━━━━━━━━━━━━━┈⊷*
-> *Powered by Sir LOFT*
+┏━━❮ *GROUP COMMANDS* ❯━━┓
+┃ • ${config.PREFIX}join
+┃ • ${config.PREFIX}leave
+┃ • ${config.PREFIX}bc
+┃ • ${config.PREFIX}hidetag
+┃ • ${config.PREFIX}welcome
+┃ • ${config.PREFIX}mute
+┃ • ${config.PREFIX}unmute
+┃ • ${config.PREFIX}kick
+┃ • ${config.PREFIX}add
+┃ • ${config.PREFIX}tagall
+┃ • ${config.PREFIX}promote
+┃ • ${config.PREFIX}demote
+┃ • ${config.PREFIX}gname
+┃ • ${config.PREFIX}gdesc
+┗━━━━━━━━━━━━━━━━━━━━━━━┛
+
+┏━━❮ *OTHER TOOLS* ❯━━┓
+┃ • ${config.PREFIX}getpp
+┃ • ${config.PREFIX}sticker
+┃ • ${config.PREFIX}voicegpt
+┃ • ${config.PREFIX}joke
+┃ • ${config.PREFIX}weather
+┃ • ${config.PREFIX}aisummary
+┃ • ${config.PREFIX}sendupdate
+┃ • ${config.PREFIX}textm
+┃ • ${config.PREFIX}getdp
+┃ • ${config.PREFIX}birthday
+┗━━━━━━━━━━━━━━━━━━━━━━━┛
+
+> ✨ *Powered by Sir LOFT* ✨
+> © 2025 Loft Quantum Bot
 `.trim();
 
-      // ────── SEND MENU WITH RANDOM IMAGE ──────
-      await socket.sendMessage(
-        from,
-        {
-          image: { url: getRandomImage() },
-          caption: menuText,
-          contextInfo: {
-            mentionedJid: [sender],
-            forwardingScore: 999,
-            isForwarded: true,
-            forwardedNewsletterMessageInfo: {
-              newsletterJid: '120363422731708290@newsletter',
-              newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚃',
-              serverMessageId: 143
-            }
+      // ────── SEND MENU WITH IMAGE ──────
+      await socket.sendMessage(from, {
+        image: { url: getRandomImage() },
+        caption: menuText,
+        contextInfo: {
+          mentionedJid: [sender],
+          forwardingScore: 999,
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363422731708290@newsletter',
+            newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚝',
+            serverMessageId: 143
           }
-        },
-        { quoted: msg }
-      );
+        }
+      }, { quoted: msg });
 
     } catch (error) {
-      console.error("Menu Command Error:", error);
-      await socket.sendMessage(
-        from,
-        { text: `❌ *Error:* \`${error.message}\`` },
-        { quoted: msg }
-      );
+      console.error("❌ Menu Command Error:", error);
+      await socket.sendMessage(from, {
+        text: `❌ *Menu Error*\n\`\`\`${error.message}\`\`\``
+      }, { quoted: msg });
     }
   }
 };
