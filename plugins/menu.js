@@ -16,7 +16,7 @@ module.exports = {
         'https://files.catbox.moe/deeo6l.jpg',
         'https://h.uguu.se/tEviMVWD.jpg',
         'https://o.uguu.se/FGDyxLGk.jpg',
-        'https://files.catbox.moe/111aaa.jpg',
+        'https://h.uguu.se/Leqyukxp.jpg',
         'https://files.catbox.moe/222bbb.jpg',
         // add more URLs here
       ];
