@@ -11,7 +11,19 @@ module.exports = {
       const sender = msg.key.participant || from;
       const pushname = msg.pushName || "there";
 
-       
+      // ────── RANDOM IMAGE ARRAY ──────
+      const MENU_IMAGES = [
+        'https://files.catbox.moe/deeo6l.jpg',
+        'https://files.catbox.moe/abc123.jpg',
+        'https://files.catbox.moe/xyz987.jpg',
+        'https://files.catbox.moe/111aaa.jpg',
+        'https://files.catbox.moe/222bbb.jpg',
+        // add more URLs here
+      ];
+
+      const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
+
+      // ────── MENU TEXT (unchanged) ──────
       const menumsg = `
 ╭▰☭ *𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝* ☭▰╮
 ✖ 🔰 *ʙᴏᴛ ɴᴀᴍᴇ:* 𝙻𝚘𝚏𝚝 𝚀𝚞𝚊𝚗𝚝𝚞𝚖
@@ -91,9 +103,9 @@ module.exports = {
 *╰━━━━━━━━━━━━━━━┈⊷*
 > *𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃*`;
 
-      // Envoi du menu avec image et contextInfo stylisé
+      // ────── SEND MESSAGE WITH RANDOM IMAGE ──────
       await socket.sendMessage(sender, {
-        image: { url: 'https://files.catbox.moe/deeo6l.jpg' },
+        image: { url: randomItem(MENU_IMAGES) },
         caption: menumsg,
         contextInfo: {
           mentionedJid: [sender],
@@ -101,7 +113,7 @@ module.exports = {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
             newsletterJid: '120363422731708290@newsletter',
-            newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚝',
+            newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚃',
             serverMessageId: 143
           }
         }
