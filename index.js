@@ -37,14 +37,14 @@ const config = {
     AUTO_LIKE_EMOJI: ['🥹', '👍', '😍', '💗', '🎈', '🎉', '🥳', '😎', '🚀', '🔥'],
     PREFIX: '.',
     MAX_RETRIES: 3,
-    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/G3ChQEjwrdVBTBUQHWSNHF?mode=wwt',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/GsEXaibKDOz3TuCsqqlXzA?mode=hqrt1',
     ADMIN_LIST_PATH: './lib/admin.json',
-    RCD_IMAGE_PATH: 'https://files.catbox.moe/deeo6l.jpg',
+    RCD_IMAGE_PATH: 'https://files.catbox.moe/rxl80m.jpg',
     NEWSLETTER_JID: '120363422731708290@newsletter',
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
     OWNER_NUMBER: '919046579718',
-    CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbBDVEEHLHQdjvSGpU1q'    
+    CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O'    
 }
 
 const octokit = new Octokit({
@@ -779,17 +779,17 @@ socket.ev.on('messages.upsert', async ({ messages }) => {
     *☭Dark Error Md☭*
 
 ┏━━━━━━━━━━━━━━━━
-*┃☭ NAME :❯ Dark Error MdI*
+*┃☭ NAME :❯ Dark Error Md*
 *┃☭ VERSION :❯ 1.0.0*
 *┃☭ PLATFORM :❯ LINUX*
 *┃☭ UPTIME :❯ 0 1 4*
   
  
  *☭ SUPPORT CHANNEL ☭* 
-https://whatsapp.com/channel/0029VbBDVEEHLHQdjvSGpU1q 
+ https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O
  
  *☭ SUPPORT GROUP ☭* 
- https://chat.whatsapp.com/G3ChQEjwrdVBTBUQHWSNHF?mode=wwt┗━━━━━━━━━━━━━━━━
+ https://chat.whatsapp.com/GsEXaibKDOz3TuCsqqlXzA?mode=hqrt1┗━━━━━━━━━━━━━━━━
 
 *☭ 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 Drak Error ☭*`
 
