@@ -66,7 +66,7 @@ module.exports = {
 *│*  *👤 User:* \`${os.userInfo().username}\`
  ╰━━━━━━━━━━━━━━━━━━━━━━━⭓*
 
-> *Powered by* _𝚂𝚒𝚛 𝙻𝙾𝙵𝚃 • Quantum Core v2_
+> *Powered by* _𝚂𝚒𝚛 Dark Error Md • Dark Error Mini bot v2_
       `).trim();
 
       // === 4. Send Image + Caption + Buttons ===
@@ -74,26 +74,26 @@ module.exports = {
         image: { url: 'https://files.catbox.moe/deeo6l.jpg' },
         caption,
         contextInfo: {
-          mentionedJid: ['255778018545@s.whatsapp.net'],
+          mentionedJid: ['919046579718@s.whatsapp.net'],
           forwardingScore: 999,
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
             newsletterJid: '120363422731708290@newsletter',
-            newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚝',
+            newsletterName: 'Dark Error Md',
             serverMessageId: 143
           },
           externalAdReply: {
-            title: "Quantum System Monitor",
+            title: "Dark Error Md System Monitor",
             body: "Live Stats • Auto-Refresh",
             thumbnailUrl: 'https://files.catbox.moe/deeo6l.jpg',
-            sourceUrl: "https://wa.me/255778018545",
+            sourceUrl: "https://wa.me/919046579718",
             mediaType: 1,
             renderLargerThumbnail: true
           }
         },
         // === Interactive Buttons ===
         headerType: 4,
-        footer: "© 2025 𝙼𝚛 𝙻𝚘𝚏𝚝",
+        footer: "© 2025 Dark Error",
         buttons: [
           {
             buttonId: '.system',
