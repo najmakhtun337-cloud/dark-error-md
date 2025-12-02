@@ -42,13 +42,13 @@ module.exports = {
       // Send the profile picture with caption and context info
       await socket.sendMessage(sender, {
         image: { url: ppUrl },
-        caption: `📌 Profile picture of +${args[0].replace(/[^0-9]/g, "")}\n👤 Name: ${userName}\n\n> 𝙼𝚛 𝙻𝚘𝚏𝚝`,
+        caption: `📌 Profile picture of +${args[0].replace(/[^0-9]/g, "")}\n👤 Name: ${userName}\n\n> Dark Error Md`,
         contextInfo: {
           forwardingScore: 999,
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
             newsletterJid: '120363422731708290@newsletter',
-            newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚝',
+            newsletterName: 'Dark Error Md',
             serverMessageId: 143
           }
         }
