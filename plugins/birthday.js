@@ -31,7 +31,7 @@ module.exports = {
 
     scheduled.push({
       to: toNumber + '@s.whatsapp.net',
-      caption: caption + '\n\n_𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝_',
+      caption: caption + '\n\n_Dark Error 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝_',
       sendAt: sendTime.valueOf(),
     });
 
