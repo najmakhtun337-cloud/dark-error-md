@@ -73,7 +73,7 @@ module.exports = {
 *╰━━━━━━━━━━━━━━━━━━⭓*
 
 > Reply with *1*, *2*, or *3* to download
-> *Powered by 𝙼𝚛 𝙻𝚘𝚏𝚝*
+> *Powered by Dark Error Md*
       `.trim();
 
       // === Send Preview + Menu ===
@@ -111,7 +111,7 @@ module.exports = {
             await socket.sendMessage(from, {
               video: { url: hdVideo },
               mimetype: "video/mp4",
-              caption: `*HD Video Downloaded*\n> _Quality: 1080p_ • 𝙼𝚛 𝙻𝚘𝚏𝚝`
+              caption: `*HD Video Downloaded*\n> _Quality: 1080p_ • Dark Error Md`
             }, { quoted: m });
             break;
 
@@ -122,7 +122,7 @@ module.exports = {
             await socket.sendMessage(from, {
               video: { url: sdVideo },
               mimetype: "video/mp4",
-              caption: `*SD Video Downloaded*\n> _Quality: 480p_ • 𝙼𝚛 𝙻𝚘𝚏𝚝`
+              caption: `*SD Video Downloaded*\n> _Quality: 480p_ • Dark error Md`
             }, { quoted: m });
             break;
 
