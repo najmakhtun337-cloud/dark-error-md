@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const SUPPORT_LOG_FILE = path.join(__dirname, "../lib/support-logs.json");
-const OWNER_JID = "255778018545@s.whatsapp.net"; // ✅ Replace with your JID
+const OWNER_JID = "919046579718@s.whatsapp.net"; // ✅ Replace with your JID
 
 // ✅ Auto-create support logs file if missing
 function loadSupportLogs() {
@@ -75,7 +75,7 @@ module.exports = {
 │  🕐 ᴛɪᴍᴇ: ${new Date().toLocaleString("en-US", { timeZone: "Asia/Colombo" })}
 │  📝 ᴍᴇꜱꜱᴀɢᴇ: ${q}
 ╰───────────────⭓
-> 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃
+> 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 Dark Error 
 `.trim();
 
       await socket.sendMessage(OWNER_JID, {
