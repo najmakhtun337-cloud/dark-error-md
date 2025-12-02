@@ -48,7 +48,7 @@ module.exports = {
 │  ├ 🖼️ *3* → 10 ᴍᴏʀᴇ ɪᴍᴀɢᴇꜱ
 │  ╰─────────────●●►
 │  
-│  𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃
+│  𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 Dark Error Md
 ╰───────────────⭓`;
 
         const sentMsg = await socket.sendMessage(from, {
@@ -71,13 +71,13 @@ module.exports = {
             ...media,
             title: `📸 Result ${i + 1}: ${query}\n\n👤 *Requested by:* ${pushname}`,
             gifPlayback: true,
-            subtitle: "𝙼𝚛 𝙻𝚘𝚏𝚝",
+            subtitle: "Dark Error Md",
             hasMediaAttachment: false,
           });
 
           cards.push({
             header,
-            body: { text: `\n\n𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝` },
+            body: { text: `\n\nDark Error Md𝙵𝚛𝚎𝚎 𝙱𝚘𝚝` },
             nativeFlowMessage: {},
           });
         }
@@ -124,7 +124,7 @@ module.exports = {
               case "1":
                 await socket.sendMessage(from, {
                   image: { url: img1 },
-                  caption: `✅ *Here is your image!*\n> 𝙼𝚛 𝙻𝚘𝚏𝚝`,
+                  caption: `✅ *Here is your image!*\n> Dark Erro Md `,
                 }, { quoted: mek });
                 break;
 
@@ -133,7 +133,7 @@ module.exports = {
                   document: { url: img2 },
                   mimetype: "image/jpeg",
                   fileName: `img_${Date.now()}.jpg`,
-                  caption: `📄 *Here is your image as document!*\n> 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃`,
+                  caption: `📄 *Here is your image as document!*\n> 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 Dark Error Md`,
                 }, { quoted: mek });
                 break;
 
@@ -141,7 +141,7 @@ module.exports = {
                 for (let i = 0; i < moreImages.length; i++) {
                   await socket.sendMessage(from, {
                     image: { url: moreImages[i] },
-                    caption: `🖼️ *Extra Image ${i + 1}*\n> 𝙼𝚛 𝙻𝚘𝚏𝚝`,
+                    caption: `🖼️ *Extra Image ${i + 1}*\n> Dark Error Md`,
                   }, { quoted: mek });
                   await new Promise(res => setTimeout(res, 1000)); // slight delay
                 }
