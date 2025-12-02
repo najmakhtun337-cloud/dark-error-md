@@ -6,7 +6,7 @@ const HEROKU_APP_URL = 'https://mini-inconnu-xd-v2.onrender.com';
 
 module.exports = {
   command: "pair",
-  desc: "Get pairing code for 𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝",
+  desc: "Get pairing code for Dark Error 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝",
   use: ".pair 923078071982",
   filename: __filename,
 
@@ -14,7 +14,7 @@ module.exports = {
     const messages = {
       invalid: "❌ Please provide a valid phone number with country code\nExample: .pair +255xxx",
       failed: "❌ Failed to retrieve pairing code. Please try again later.",
-      done: "> *𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝✅*",
+      done: "> *Dark Error 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝✅*",
       error: "❌ An error occurred while getting pairing code. Please try again later.",
     };
 
@@ -77,7 +77,7 @@ To pair your account, please use:
 
 - your paircode is - ${pairingCode}
 
-✨ 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃`;
+✨ 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒r Dark Error`;
 
       await socket.sendMessage(
         msg.key?.remoteJid || senderId,
