@@ -50,7 +50,7 @@ async function updateBio(socket) {
   try {
     const uptime = process.uptime();
     const muptime = clockString(uptime * 1000);
-    const botname = global.config?.botname || "𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝";
+    const botname = global.config?.botname || "Dark Error 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝";
 
     const bio = `🌟 ${botname} ACTIVE (${muptime}) 🌟`;
     await socket.updateProfileStatus(bio);
