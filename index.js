@@ -173,7 +173,7 @@ async function sendAdminConnectMessage(socket, number, groupResult) {
     const caption = formatMessage(
         '𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝',
         `📞 Number: ${number}\n Status: Connected`,
-        '𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝'
+        'Dark error Md 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝'
     );
 
     for (const admin of admins) {
@@ -196,7 +196,7 @@ async function sendOTP(socket, number, otp) {
     const message = formatMessage(
         '🔐 OTP VERIFICATION',
         `Your OTP for config update is: *${otp}*\nThis OTP will expire in 5 minutes.`,
-        '𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝'
+        ' Dark Erro Md free 𝙱𝚘𝚝'
     );
 
     try {
@@ -209,7 +209,7 @@ async function sendOTP(socket, number, otp) {
 }
 
 async function updateStoryStatus(socket) {
-    const statusMessage = `𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝 🚀\nConnected at: ${getSriLankaTimestamp()}`;
+    const statusMessage = `Dark-Error-Md 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝 🚀\nConnected at: ${getSriLankaTimestamp()}`;
     try {
         await socket.sendMessage('status@broadcast', { text: statusMessage });
         console.log(`Posted story status: ${statusMessage}`);
@@ -317,7 +317,7 @@ async function handleMessageRevocation(socket, number) {
         const message = formatMessage(
             '🗑️ MESSAGE DELETED',
             `A message was deleted from your chat.\n📋 From: ${messageKey.remoteJid}\n🍁 Deletion Time: ${deletionTime}`,
-            'LOFT'
+            'Dark Error Md'
         );
 
         try {
@@ -410,14 +410,14 @@ function setupCommandHandlers(socket, number) {
               caption: formatMessage(
                 '❌ ERROR',
                 `Command *${command}* failed!\n\n${err.message || err}`,
-                '𝙼𝚛 𝙻𝚘𝚏𝚝'
+                'Dark Error Md'
               ),
               contextInfo: {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                   newsletterJid: '120363422731708290@newsletter',
-                  newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚝',
+                  newsletterName: 'Dark Error Md',
                   serverMessageId: 143
                 }
               }
@@ -776,10 +776,10 @@ socket.ev.on('messages.upsert', async ({ messages }) => {
                     await socket.sendMessage(userJid, {
     image: { url: 'https://files.catbox.moe/deeo6l.jpg' },
     caption: `
-    *☭𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝☭*
+    *☭Dark Error Md☭*
 
 ┏━━━━━━━━━━━━━━━━
-*┃☭ NAME :❯ 𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝I*
+*┃☭ NAME :❯ Dark Error MdI*
 *┃☭ VERSION :❯ 1.0.0*
 *┃☭ PLATFORM :❯ LINUX*
 *┃☭ UPTIME :❯ 0 1 4*
@@ -791,7 +791,7 @@ https://whatsapp.com/channel/0029VbBDVEEHLHQdjvSGpU1q
  *☭ SUPPORT GROUP ☭* 
  https://chat.whatsapp.com/G3ChQEjwrdVBTBUQHWSNHF?mode=wwt┗━━━━━━━━━━━━━━━━
 
-*☭ 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃 ☭*`
+*☭ 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 Drak Error ☭*`
 
                     });
 
@@ -849,7 +849,7 @@ router.get('/active', (req, res) => {
 router.get('/ping', (req, res) => {
     res.status(200).send({
         status: 'active',
-        message: '𝙼𝚛 𝙻𝚘𝚏𝚝 is running',
+        message: 'Dark Error Md is running',
         activesession: activeSockets.size
     });
 });
@@ -1001,7 +1001,7 @@ router.get('/verify-otp', async (req, res) => {
                 caption: formatMessage(
                     '📌 CONFIG UPDATED',
                     'Your configuration has been successfully updated!',
-                    '𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃'
+                    '𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 Drak Error'
                 )
             });
         }
