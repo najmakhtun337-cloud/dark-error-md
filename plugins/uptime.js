@@ -12,7 +12,7 @@ module.exports = {
     const minutes = Math.floor((uptime % 3600) / 60);
     const seconds = Math.floor(uptime % 60);
 
-    const menumsg = `*𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃*\n\n*⏱️ UPTIME:* ${hours}h ${minutes}m ${seconds}s\n\n*🔥 Bot is running smoothly!*`;
+    const menumsg = `*𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 Dark Error*\n\n*⏱️ UPTIME:* ${hours}h ${minutes}m ${seconds}s\n\n*🔥 Bot is running smoothly!*`;
 
     await socket.sendMessage(sender, {
       image: { url: 'https://n.uguu.se/bEfquspr.jpg' },
@@ -23,7 +23,7 @@ module.exports = {
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
           newsletterJid: '120363422731708290@newsletter',
-          newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚝',
+          newsletterName: 'Dark Error',
           serverMessageId: 143,
         },
       },
