@@ -43,7 +43,7 @@ module.exports = {
       // ------------------- 3. Build selection menu -------------------
       let menu = `🔞 *XNXX Results for:* ${query}\n\n`;
       videos.forEach((v, i) => (menu += `*${i + 1}.* ${v.title}\n`));
-      menu += `\n📥 *Reply with a number (1-${videos.length}) to pick a video.*\n\n> 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃`;
+      menu += `\n📥 *Reply with a number (1-${videos.length}) to pick a video.*\n\n> 𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 Dark error`;
 
       const sent = await socket.sendMessage(from, { text: menu }, { quoted: msg });
       const menuMsgId = sent.key.id;
@@ -126,7 +126,7 @@ module.exports = {
                 caption:
                   `${chosen.title}\n\n` +
                   `💾 ${choice === 1 ? "High" : "Low"} Quality\n\n` +
-                  `> 𝙼𝚛 𝙻𝚘𝚏𝚝`
+                  `> Dark Error`
               },
               { quoted: m2 }
             );
