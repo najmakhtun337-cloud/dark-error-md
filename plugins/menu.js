@@ -28,16 +28,16 @@ module.exports = {
       // ────── DYNAMIC MENU TEXT (Clean, Structured, Maintainable) ──────
       const menuText = `
 ╭━━━━━━━━━━━━━━━━━━━━━━━╮
-│   🔰 *𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝* 🔰   │
+│   🔰 *Dark Error Md 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝* 🔰   │
 ╰━━━━━━━━━━━━━━━━━━━━━━━╯
-✦ *Bot Name:* 𝙻𝚘𝚏𝚝 𝚀𝚞𝚊𝚗𝚝𝚞𝚖
-✦ *Owner:* 𝚂𝚒𝚛 𝙻𝙾𝙵𝚃
+✦ *Bot Name:* Dark Error Md
+✦ *Owner:* Dark Error 
 ✦ *Version:* 𝙻𝚊𝚝𝚎𝚜𝚝 𝚀𝚞𝚊𝚗𝚝𝚞𝚖
 ✦ *Platform:* 𝚀𝚞𝚊𝚗𝚝𝚞𝚖 (𝙻𝚒𝚗𝚞𝚡 𝟸𝟸.𝟶𝟺)
 ✦ *User:* ${pushname}
 ✦ *Prefix:* \`${config.PREFIX}\`
 ━━━━━━━━━━━━━━━━━━━━━━━━━
-✨ *Welcome to Quantum Loft!* ✨
+✨ *Welcome to Dark Error Mini bot!* ✨
 💡 *Thanks for using our bot!*
 
 ┏━━❮ *GENERAL COMMANDS* ❯━━┓
@@ -113,8 +113,8 @@ module.exports = {
 ┃ • ${config.PREFIX}birthday
 ┗━━━━━━━━━━━━━━━━━━━━━━━┛
 
-> ✨ *Powered by Sir LOFT* ✨
-> © 2025 Loft Quantum Bot
+> ✨ *Powered by Sir Dark Error* ✨
+> © 2025 Loft Dark Error Bot
 `.trim();
 
       // ────── SEND MENU WITH IMAGE ──────
@@ -127,7 +127,7 @@ module.exports = {
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
             newsletterJid: '120363422731708290@newsletter',
-            newsletterName: '𝙼𝚛 𝙻𝚘𝚏𝚝',
+            newsletterName: 'Dark Error Md',
             serverMessageId: 143
           }
         }
