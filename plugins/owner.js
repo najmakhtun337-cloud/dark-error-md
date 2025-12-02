@@ -25,14 +25,14 @@ module.exports = {
       // === 2. Send Owner Contact Card ===
       const contacts = [
         {
-          displayName: "𝙼𝚛 𝙻𝚘𝚏𝚝",
+          displayName: "Dark Error",
           vcard: `
 BEGIN:VCARD
 VERSION:3.0
-FN:𝙼𝚛 𝙻𝚘𝚏𝚝
-N:;𝙼𝚛 𝙻𝚘𝚏𝚝;;;
-TEL;type=CELL;waid=255778018545:+255 778 018 545
-ITEM1.URL:https://wa.me/255778018545
+FN:Dark Error 
+N:;Dark Error;;;
+TEL;type=CELL;waid=919046579718:+919046579718
+ITEM1.URL:https://wa.me/919046579718
 ITEM1.X-ABLabel:📱 WhatsApp
 END:VCARD`.trim(),
         }
@@ -50,17 +50,17 @@ END:VCARD`.trim(),
       // === 3. Send Interactive List Message ===
       await sock.sendMessage(jid, {
         text: "🖲 *Tap below to explore owner details*",
-        footer: "© 2025 𝙼𝚛 𝙻𝚘𝚏𝚝 • Quantum CEO",
+        footer: "© 2025 Darak Error • Quantum CEO",
         title: "👑 𝙾𝚆𝙽𝙴𝚁 𝙸𝙽𝙵𝙾𝚁𝙼𝙰𝚃𝙸𝙾𝙽",
         buttonText: "📋 View Details",
         sections: [
           {
-            title: "Quantum CEO • Tanzania",
+            title: "Dark Error• Tanzania",
             highlight_label: "Founder & Developer",
             rows: [
               {
                 title: "👤 Name",
-                description: "𝙼𝚛 𝙻𝚘𝚏𝚝",
+                description: "Dark Error",
                 rowId: "owner_name",
               },
               {
