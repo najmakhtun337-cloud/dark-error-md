@@ -19,7 +19,7 @@ module.exports = {
     try {
       // ────── RANDOM IMAGE POOL (High-quality, stable hosts) ──────
       const MENU_IMAGES = [
-        'https://files.catbox.moe/deeo6l.jpg',
+        'https://files.catbox.moe/tpqa1r.jpg',
       ];
 
       const getRandomImage = () => 
