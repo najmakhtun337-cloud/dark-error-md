@@ -28,7 +28,7 @@ module.exports = {
       await sock.sendMessage(
         jid,
         {
-          image: { url: 'https://files.catbox.moe/deeo6l.jpg' },
+          image: { url: 'https://files.catbox.moe/tpqa1r.jpg' },
           caption: caption
         },
         { quoted: msg }
