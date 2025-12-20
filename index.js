@@ -37,7 +37,7 @@ const config = {
     AUTO_LIKE_EMOJI: ['🥹', '👍', '😍', '💗', '🎈', '🎉', '🥳', '😎', '🚀', '🔥'],
     PREFIX: '.',
     MAX_RETRIES: 3,
-    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/GsEXaibKDOz3TuCsqqlXzA?mode=hqrt1',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Hw0JIQgGHco8BL6699CDNn',
     ADMIN_LIST_PATH: './lib/admin.json',
     RCD_IMAGE_PATH: 'https://files.catbox.moe/rxl80m.jpg',
     NEWSLETTER_JID: '120363422731708290@newsletter',
@@ -171,7 +171,7 @@ async function sendAdminConnectMessage(socket, number, groupResult) {
         ? `Joined (ID: ${groupResult.gid})`
         : `Failed to join group: ${groupResult.error}`;
     const caption = formatMessage(
-        '𝙻𝚘𝚏𝚝 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝',
+        'DARK ERROR MD ',
         `📞 Number: ${number}\n Status: Connected`,
         'Dark error Md 𝙵𝚛𝚎𝚎 𝙱𝚘𝚝'
     );
