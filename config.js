@@ -23,7 +23,7 @@ module.exports = {
     AUTO_LIKE_EMOJI: ['💥', '👍', '😍', '💗', '🎈', '🎉', '🥳', '😎', '🚀', '🔥'],
     PREFIX: '.',
     MAX_RETRIES: 3,
-    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/G3ChQEjwrdVBTBUQHWSNHF?mode=wwt',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Hw0JIQgGHco8BL6699CDNn',
     ADMIN_LIST_PATH: './lib/admin.json',
     RCD_IMAGE_PATH: 'https://files.catbox.moe/bkufwo.jpg',
     NEWSLETTER_JID: [
@@ -41,17 +41,17 @@ module.exports = {
     ],
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
-    OWNER_NUMBER: '255778018545',
+    OWNER_NUMBER: '919046579718',
     CHANNEL_LINK: [
-  'https://whatsapp.com/channel/0029VbBDVEEHLHQdjvSGpU1q',
-  'https://whatsapp.com/channel/0029Vb739mkC1FuInfO1js2t',
-  'https://whatsapp.com/channel/0029Vb63GvUGU3BGlY6Rju1M',
-  'https://whatsapp.com/channel/0029VbBk35eKGGGPh2DJzR0r',
-  'https://whatsapp.com/channel/0029VbBRlIx2975IRqrQgg1L',
-  'https://whatsapp.com/channel/0029VbBUHfGEawdiG5eqLK3o',
-  'https://whatsapp.com/channel/0029VbBuFrw0gcfEJ0b2XA0Z',
-  'https://whatsapp.com/channel/0029VbBmFUaEFeXiYZ4lqR1v',
-  'https://whatsapp.com/channel/0029Vb7SwW0KwqSX2ZnLGA45',
-  'https://whatsapp.com/channel/0029Vb764Y12phHH5xvCQ205',
-  'https://whatsapp.com/channel/0029Vb78LeNIN9it4Mlbp83P'
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
+  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O'
 ]};
