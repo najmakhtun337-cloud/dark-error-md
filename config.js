@@ -43,15 +43,15 @@ module.exports = {
     OTP_EXPIRY: 300000,
     OWNER_NUMBER: '919046579718',
     CHANNEL_LINK: [
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O',
-  'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O'
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T',
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T',
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T',
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T',
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T',
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T',
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T',
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T',
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T',
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T',
+  'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T'
 ]};
