@@ -23,7 +23,7 @@ module.exports = {
     AUTO_LIKE_EMOJI: ['💥', '👍', '😍', '💗', '🎈', '🎉', '🥳', '😎', '🚀', '🔥'],
     PREFIX: '.',
     MAX_RETRIES: 3,
-    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Hw0JIQgGHco8BL6699CDNn',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/D1EBh3CMXw38j8E0ujY7dA?mode=gi_t',
     ADMIN_LIST_PATH: './lib/admin.json',
     RCD_IMAGE_PATH: 'https://files.catbox.moe/bkufwo.jpg',
     NEWSLETTER_JID: [
