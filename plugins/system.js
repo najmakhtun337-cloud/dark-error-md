@@ -78,7 +78,7 @@ module.exports = {
           forwardingScore: 999,
           isForwarded: true,
           forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363422731708290@newsletter',
+            newsletterJid: '120363406998642286@newsletter',
             newsletterName: 'Dark Error Md',
             serverMessageId: 143
           },
