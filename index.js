@@ -37,14 +37,14 @@ const config = {
     AUTO_LIKE_EMOJI: ['🥹', '👍', '😍', '💗', '🎈', '🎉', '🥳', '😎', '🚀', '🔥'],
     PREFIX: '.',
     MAX_RETRIES: 3,
-    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/Hw0JIQgGHco8BL6699CDNn',
+    GROUP_INVITE_LINK: 'https://chat.whatsapp.com/D1EBh3CMXw38j8E0ujY7dA?mode=gi_t',
     ADMIN_LIST_PATH: './lib/admin.json',
     RCD_IMAGE_PATH: 'https://files.catbox.moe/rxl80m.jpg',
-    NEWSLETTER_JID: '120363422731708290@newsletter',
+    NEWSLETTER_JID: '120363406998642286@newsletter',
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
     OWNER_NUMBER: '919046579718',
-    CHANNEL_LINK: 'https://whatsapp.com/channel/0029VbBQQ6v4Y9lenR8ROD3O'    
+    CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb7EqT7Fy728yCgwnZ3T'    
 }
 
 const octokit = new Octokit({
